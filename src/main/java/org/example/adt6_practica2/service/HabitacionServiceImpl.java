@@ -33,12 +33,12 @@ public class HabitacionServiceImpl implements IHabitacionService {
 
     @Override
     public List<Habitacion> listarPorHotel(Integer id_hotel) {
-        List<Habitacion> allData = repo.findAll();
+        List<Habitacion> allData = repo.listarPorHotel(id_hotel);
 
         List<Habitacion> results = new ArrayList<>();
 
         for (Habitacion data : allData) {
-            if (id_hotel != null && data.getId_hotel().equals(id_hotel)) {
+            if (id_hotel != null && data.getHotel().getId().equals(id_hotel)) {
                 results.add(data);
             }
         }
@@ -52,7 +52,7 @@ public class HabitacionServiceImpl implements IHabitacionService {
         List<Habitacion> results = new ArrayList<>();
 
         for (Habitacion data : allData) {
-            if (id_hotel != null && data.getId_hotel().equals(id_hotel)) {
+            if (id_hotel != null && data.getHotel().getId().equals(id_hotel)) {
                 results.add(data);
             }
         }

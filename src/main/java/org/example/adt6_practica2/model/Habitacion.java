@@ -1,9 +1,6 @@
 package org.example.adt6_practica2.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Habitacion {
@@ -19,7 +16,9 @@ public class Habitacion {
 
     private boolean ocupada;
 
-    private Integer id_hotel;
+    @ManyToOne
+    @JoinColumn(name = "id_hotel")
+    private Hotel hotel;
 
     public Integer getId() {
         return id;
@@ -64,20 +63,20 @@ public class Habitacion {
         this.precio = precio;
     }
 
-    public Habitacion(Integer id, Integer tamano, String precio, boolean desayuno, boolean ocupada, Integer id_hotel) {
+    public Habitacion(Integer id, Integer tamano, String precio, boolean desayuno, boolean ocupada, Hotel hotel) {
         this.id = id;
         this.tamano = tamano;
         this.precio = precio;
         this.desayuno = desayuno;
         this.ocupada = ocupada;
-        this.id_hotel = id_hotel;
+        this.hotel = hotel;
     }
 
-    public Integer getId_hotel() {
-        return id_hotel;
+    public Hotel getHotel() {
+        return hotel;
     }
 
-    public void setId_hotel(Integer id_hotel) {
-        this.id_hotel = id_hotel;
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
     }
 }
